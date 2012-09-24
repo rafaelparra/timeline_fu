@@ -8,7 +8,7 @@ class TimelineEvent < ActiveRecord::Base
   
   def subject_obj
     if stored_subject
-      stored_subj = ActiveSupport::JSON.decode(stored_subject)["#{subject_type.downcase}"]
+      stored_subj = ActiveSupport::JSON.decode(stored_subject)["#{subject_type.underscore}"]
       stored_subj.delete("id")
       subj = subject_type.constantize.new
       subj.attributes = stored_subj
@@ -19,7 +19,7 @@ class TimelineEvent < ActiveRecord::Base
   end
   
   def subject_json
-    ActiveSupport::JSON.decode(stored_subject)["#{subject_type.downcase}"] if stored_subject
+    ActiveSupport::JSON.decode(stored_subject)["#{subject_type.underscore}"] if stored_subject
   end
   
 end
