@@ -31,8 +31,13 @@ module TimelineFu
             memo
           end
           create_options[:event_type] = event_type.to_s
-          create_options[:stored_subject] = ActiveSupport::JSON.encode(send(opts[:subject])) if opts[:store]
-
+          if opts[:store]
+            if opts[:subject] == :self
+              create_options[:stored_subject] = ActiveSupport::JSON.encode(self)
+            else
+              create_options[:stored_subject] = ActiveSupport::JSON.encode(send(opts[:subject]))
+            end
+          end
           TimelineEvent.create!(create_options)
         end
 
