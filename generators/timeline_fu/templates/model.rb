@@ -18,7 +18,7 @@ class TimelineEvent < ActiveRecord::Base
     end
   end
   
-  def json_subject
+  def subject_json
     ActiveSupport::JSON.decode(stored_subject)["#{subject_type.downcase}"] if stored_subject
   end
   

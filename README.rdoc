@@ -72,7 +72,11 @@ It will receive the following parameters in #create!
   - the comment instance
 - secondary_subject
   - the post instance
-
+- subject_json
+  - the comment stored instance in json format
+- subject_obj
+  - the comment stored instantiated object
+    
 The generated model stores most of its info as polymorphic relationships.
 
   class TimelineEvent < ActiveRecord::Base
