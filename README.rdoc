@@ -55,6 +55,8 @@ Here's another example:
                         :actor              => :commenter,
                         #implicit :subject  => self,
                         :secondary_subject  => 'post',
+                        :context            => :commentable,
+                        :store              => true
                         :if => lambda { |comment| comment.commenter != comment.post.author }
   end
 
