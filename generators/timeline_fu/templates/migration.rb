@@ -6,7 +6,7 @@ class CreateTimelineEvents < ActiveRecord::Migration
       t.string   :actor_type, :limit => 30
       t.string   :secondary_subject_type, :limit => 30
       t.string   :context_type, :limit => 30
-      t.integer  :subject_id,    :actor_id,    :secondary_subject_id
+      t.integer  :subject_id,    :actor_id,    :secondary_subject_id, :context_id
       t.text     :stored_subject
       t.timestamps
     end
